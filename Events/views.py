@@ -25,7 +25,7 @@ def registerPage(request):
         form = CreateUserForm(request.POST)
 
         if form.is_valid():
-            client = vonage.Client(key= '4b2b1283' ,secret='1oyWH3grRTScbiwE')
+            client = vonage.Client(key= 'YOUR KEY' ,secret='YOUR SECERET')
             email = form.cleaned_data.get('email')
             params = {
                 "channel_timeout": 60,
@@ -67,7 +67,7 @@ def otp(request):
     if request.method == 'POST':
         entered_otp = ''.join(request.POST.get(f'otp_{i}','')for i in range(1,5))
         request_id = request.session.get('request_id')
-        client = vonage.Client(key= '4b2b1283' ,secret='1oyWH3grRTScbiwE')
+        client = vonage.Client(key= 'YOUR KEY' ,secret='YOUR SECERET')
 
         verify_request = client.verify2.check_code(request_id=request_id,code=entered_otp)
 
